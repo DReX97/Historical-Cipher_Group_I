@@ -1,3 +1,14 @@
+"""
+Original Source: https://github.com/ekcaroline/Classical-Ciphers-Railfence/blob/main/railfence_encrypt.py
+Accessed: 30 Oct 2025
+Modified by Damien Ho
+
+Description:
+This is the baseline Rail Fence Cipher implementation originally sourced from GitHub.
+My Contribution includes:
+-Implemented decryption function.
+-Integrate with main.py for group project demo.
+"""
 import string
 
 
