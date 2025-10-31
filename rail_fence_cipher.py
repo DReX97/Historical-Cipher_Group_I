@@ -68,45 +68,64 @@ def railfence_encryption(rails, message):
 def railfence_decryption(rails, cipher):#I renamed the variable in the parameter from user_message to cipher to make the code more semantically correct and easier to understand personally.
     print("\nWe will now began to perform the railfence cipher decryption. ")
 
+    #Step 1: Create an empty 2D matrix (list of lists)
+    #Each row represents a rail, and each column represents a letter position
+    #Fill the matrix initially with '\n' to mark empty cells
     rail =[['\n' for i in range(len(cipher))] for j in range(rails)]
 
+    #Step 2: Mark where characters will go in a zig zag pattern
+    #'up_down' controls the direction (down and up) of movement across the rails
     up_down = None
     row, col = 0,0
 
+    #Loop over each character position in the ciphertext
     for i in range(len(cipher)):
+        #If I'm at the top rail, start moving down
         if row == 0:
             up_down = True
+        #If I'm at the bottom rail, start moving up
         elif row == rails -1:
             up_down = False
 
+        #Mark this position with '*' to indicate a letter goes here
         rail[row][col] = '*'
+        #Move to the next column
         col += 1
+        #Move up or down depending on current direction
         row = row +1 if up_down else row -1
 
+    #Step 3: Fill the '*' positions with actual letters from the cipher text
     index = 0
-    for i in range(rails):
-        for j in range(len(cipher)):
+    for i in range(rails): #Go through each rail
+        for j in range(len(cipher)):#Go through each column
+            #If I see a '*', replace it with the next ciphertext letter
             if(rail[i][j] == '*') and (index < len(cipher)):
                 rail[i][j] = cipher[index]
-                index += 1
+                index += 1#Move to next letter in ciphertext
 
-    result = []
+    #Step 4: Read the matrix in zigzag order to reconstruct the plaintext
+    result = []#This will store the final decrypted message
     row, col = 0,0
 
     for i in range(len(cipher)):
+        #Change direction when reaching the top or bottom rail
         if row == 0:
             up_down = True
         elif row == rails - 1:
             up_down = False
 
+        #If the current cell is not empty, add the character to result
         if(rail[row][col] != '\n'):
             result.append(rail[row][col])
-            col += 1
+            col += 1 #Move to next column
 
+        #Move up or down depending on current direction
         row = row + 1 if up_down else row -1
 
+    #Step 5: Join the list of decrypted letters into one continuous plaintext message
     decrypted = "".join(result)
 
+    #Return the decrypted text so it can be used elsewhere in the program
     print(f"\nDecrypted Message: {decrypted}")
 
     return decrypted
