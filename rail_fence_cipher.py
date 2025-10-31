@@ -36,17 +36,6 @@ def railfence_encryption(rails, message):
 
     encrypted_message = []
 
-    # ignore
-    """
-    index = 0
-    jump = int(len(message) / rails)
-  
-    while index <= len(message):
-      encrypted_message += message[(jump * index) % len(message)]
-      index += 1
-  
-    print(encrypted_message)
-    """
     # Puts the rows into a list
     for row in fence:
         encrypted_message.append(''.join(row))
@@ -67,12 +56,63 @@ def railfence_encryption(rails, message):
     else:
         print("Okay, thank you for using the railfence cipher.")
 
-
-# Railfence decryption
-def railfence_decryption(rails, user_message):
+#=========================================================================
+# Rail fence decryption function
+#Author: Damien Ho
+#Description:
+#           This function performs decryption for the Rail Fence Cipher.
+#           It reconstructs the zig zag pattern used during encryption,
+#           fills the matrix with ciphertext letters in the correct order,
+#           and then reads the message diagonally to reveal the plaintext.
+#=========================================================================
+def railfence_decryption(rails, cipher):#I renamed the variable in the parameter from user_message to cipher to make the code more semantically correct and easier to understand personally.
     print("\nWe will now began to perform the railfence cipher decryption. ")
-    print(user_message)
 
+    rail =[['\n' for i in range(len(cipher))] for j in range(rails)]
+
+    up_down = None
+    row, col = 0,0
+
+    for i in range(len(cipher)):
+        if row == 0:
+            up_down = True
+        elif row == rails -1:
+            up_down = False
+
+        rail[row][col] = '*'
+        col += 1
+        row = row +1 if up_down else row -1
+
+    index = 0
+    for i in range(rails):
+        for j in range(len(cipher)):
+            if(rail[i][j] == '*') and (index < len(cipher)):
+                rail[i][j] = cipher[index]
+                index += 1
+
+    result = []
+    row, col = 0,0
+
+    for i in range(len(cipher)):
+        if row == 0:
+            up_down = True
+        elif row == rails - 1:
+            up_down = False
+
+        if(rail[row][col] != '\n'):
+            result.append(rail[row][col])
+            col += 1
+
+        row = row + 1 if up_down else row -1
+
+    decrypted = "".join(result)
+
+    print(f"\nDecrypted Message: {decrypted}")
+
+    return decrypted
+#=========================================================================
+#End of Rail Fence Cipher - Decryption Function
+#=========================================================================
 
 def menu():
     while True:
