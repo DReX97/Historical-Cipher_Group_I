@@ -149,11 +149,10 @@ def menu():
 
         #Display the main menu options to the user
         print("""\nWhat would you like to do?
-        1. Encrypt a message
-        2. Decrypt a message
-        3. Exit
-        
-        Enter a choice: """)
+1. Encrypt a message
+2. Decrypt a message
+3. Exit
+""")
 
         #Damien: Added try/except to handle invalid (non-numeric) inputs
         try:
@@ -167,7 +166,7 @@ def menu():
             case 1:
                 try:
                     # Damien: Added clear input prompt with better instruction
-                    user_key = int(input("-----------------\nEnter key (number of rails: "))
+                    user_key = int(input("-----------------\nEnter key (number of rails): "))
                     #Get message to encrypt and remove any accidental extra spaces
                     user_message = input("Enter message to be encrypted: ").strip()
 
