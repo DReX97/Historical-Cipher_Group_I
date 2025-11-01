@@ -7,6 +7,7 @@ Description:
 This is the baseline Rail Fence Cipher implementation originally sourced from GitHub.
 My Contribution includes:
 -Implemented decryption function.
+-Removed spaces from input before encryption
 -Integrate with main.py for group project demo.
 """
 import string
@@ -14,6 +15,11 @@ import string
 
 def railfence_encryption(rails, message):
     print("\nWe will now began to perform the railfence cipher. ")
+
+    # =========================================================================
+    #Damien: Improved encryption to ignore spaces before building the matrix
+    message = message.replace(" ","")
+    # =========================================================================
 
     # Create matrix
     fence = [[' ' for i in range(len(message))] for j in range(rails)]
