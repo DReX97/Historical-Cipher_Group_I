@@ -142,46 +142,77 @@ def railfence_decryption(rails, cipher):#I renamed the variable in the parameter
 def menu():
     while True:
         rails = 3
-        message = "Programmingisfun!"
 
-        userInput = int(input("""What would you like to do?
+
+        print("""\nWhat would you like to do?
 1. Encrypt a message
 2. Decrypt a message
 3. Exit
 
-Enter a choice: """))
+Enter a choice: """)
+
+        try:
+            userInput = int(input("Enter a choice: "))
+        except ValueError:
+            print("Invalid Input! Please select valid choice.\n")
+            continue
 
         match userInput:
             case 1:
-                user_key = int(input("-----------------\nEnter key: "))
-                user_message = input(
-                    "Enter message to be encrypted (more than 21 letters): ")
+                try:
+                    user_key = int(input("-----------------\nEnter key (number of rails: "))
+                    user_message = input("Enter message to be encrypted: ").strip()
 
-                if user_key >= rails and len(user_message) >= len(message):
+                    if len(user_message) < 1:
+                        print("\nMessage cannot be empty.")
+                        continue
+
                     rails = user_key
-
                     railfence_encryption(rails, user_message)
-                    break
-                else:
-                    print(
-                        "\nNot a valid input. Key size must be greater than 3 and message must be more than 21 letters."
-                    )
+                except ValueError:
+                    print("\nInvalid Input! Key must be a number. ")
+
+                # if user_key >= rails and len(user_message) >= len(message):
+                #     rails = user_key
+                #
+                #     railfence_encryption(rails, user_message)
+                #     break
+                # else:
+                #     print(
+                #         "\nNot a valid input. Key size must be greater than 3 and message must be more than 21 letters."
+                #     )
             case 2:
-                user_key = int(input("-----------------\nEnter key: "))
-                user_message = input(
-                    "Enter message to be decrypted (more than 21 letters): ")
+                try:
+                    user_key = int(input("-----------------\nEnter key (number of rails): "))
 
-                if user_key >= rails and len(user_message) >= len(message):
+                    if user_key < 2:
+                        print("\nKey must be at least 2. ")
+                        continue
+
+                    user_message = input("Enter message to be decrypted: ").strip()
+
+                    if len(user_message) < 1:
+                        print("\nMessage cannot be empty.")
+                        continue
+
                     rails = user_key
-
                     railfence_decryption(rails, user_message)
-                    break
-                else:
-                    print(
-                        "\nNot a valid input. Key size must be greater than 3 and message must be more than 21 letters."
-                    )
+                except ValueError:
+                    print("\nInvalid Input! Key must be a number. ")
+                    # if user_key >= rails and len(user_message) >= len(message):
+                    #     rails = user_key
+                    #
+                    #     railfence_decryption(rails, user_message)
+                    #     break
+                    # else:
+                    #     print(
+                    #         "\nNot a valid input. Key size must be greater than 3 and message must be more than 21 letters."
+                    #     )
             case 3:
+                print("Goodbye! ^_^")
                 exit()
+            case _:
+                print("\nInvalid Choice! Please select available choices.")
 
 
 print(
