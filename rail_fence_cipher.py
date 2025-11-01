@@ -7,7 +7,11 @@ Description:
 This is the baseline Rail Fence Cipher implementation originally sourced from GitHub.
 My Contribution includes:
 -Implemented decryption function.
--Removed spaces from input before encryption
+-Removed spaces from input before encryption.
+-Added error handling for invalid numeric inputs (try/except)
+-Added input validation for empty messages and rail key limits
+-Removed unnecessary 21-character restriction from original
+-Improved user feedback and readability for better usability
 -Integrate with main.py for group project demo.
 """
 import string
@@ -141,35 +145,42 @@ def railfence_decryption(rails, cipher):#I renamed the variable in the parameter
 
 def menu():
     while True:
-        rails = 3
+        rails = 3 #Default rail count but will be overridden by user input
 
-
+        #Display the main menu options to the user
         print("""\nWhat would you like to do?
-1. Encrypt a message
-2. Decrypt a message
-3. Exit
+        1. Encrypt a message
+        2. Decrypt a message
+        3. Exit
+        
+        Enter a choice: """)
 
-Enter a choice: """)
-
+        #Damien: Added try/except to handle invalid (non-numeric) inputs
         try:
             userInput = int(input("Enter a choice: "))
         except ValueError:
             print("Invalid Input! Please select valid choice.\n")
-            continue
+            continue#Loops back to the menu instead of crashing
 
+        #match-case used for menu options
         match userInput:
             case 1:
                 try:
+                    # Damien: Added clear input prompt with better instruction
                     user_key = int(input("-----------------\nEnter key (number of rails: "))
+                    #Get message to encrypt and remove any accidental extra spaces
                     user_message = input("Enter message to be encrypted: ").strip()
 
+                    #Damien: Prevent encryption of empty messages
                     if len(user_message) < 1:
                         print("\nMessage cannot be empty.")
                         continue
 
                     rails = user_key
+                    #Perform encryption
                     railfence_encryption(rails, user_message)
                 except ValueError:
+                    #Damien: Prevent crash if non-integer key is entered
                     print("\nInvalid Input! Key must be a number. ")
 
                 # if user_key >= rails and len(user_message) >= len(message):
@@ -185,19 +196,22 @@ Enter a choice: """)
                 try:
                     user_key = int(input("-----------------\nEnter key (number of rails): "))
 
+                    #Damien: Added validation to ensure a minimum of 2 rails
                     if user_key < 2:
                         print("\nKey must be at least 2. ")
                         continue
-
+                    #Get message tp decrypt
                     user_message = input("Enter message to be decrypted: ").strip()
-
+                    #Damien: Prevent decryption of empty messages
                     if len(user_message) < 1:
                         print("\nMessage cannot be empty.")
                         continue
 
                     rails = user_key
+                    #Perform decryption
                     railfence_decryption(rails, user_message)
                 except ValueError:
+                    #Damien: Prevent crash if non-integer key is entered
                     print("\nInvalid Input! Key must be a number. ")
                     # if user_key >= rails and len(user_message) >= len(message):
                     #     rails = user_key
@@ -209,9 +223,11 @@ Enter a choice: """)
                     #         "\nNot a valid input. Key size must be greater than 3 and message must be more than 21 letters."
                     #     )
             case 3:
+                #Damien: Added user feedback message before exiting
                 print("Goodbye! ^_^")
                 exit()
             case _:
+                #Damien: Added fall back for invalid menu options
                 print("\nInvalid Choice! Please select available choices.")
 
 
