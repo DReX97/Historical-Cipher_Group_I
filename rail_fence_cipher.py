@@ -56,15 +56,28 @@ def railfence_encryption(rails, message):
         format_enc_message += i
 
     format_enc_message = format_enc_message.replace(" ", "")
+    print("--------------------------------------------------------------------")
     print(f"\nEncrypted message: {format_enc_message}")
+    print("\n--------------------------------------------------------------------")
 
-    # Show grid
-    userChoice = input("\nWould you like to see the grid? (Y/N) ")
-    if userChoice.lower() == "y":
-        for row in fence:
-            print(''.join(row))
-    else:
-        print("Okay, thank you for using the railfence cipher.")
+    # =========================================================================
+    #Damien: Added user input validation loop for grid display, ensuring user can only enter 'Y' or 'N' (prevents numbers or invalid input)
+    while True:
+        # Show grid
+        userChoice = input("\nWould you like to see the grid? (Y/N) ")
+        print("--------------------------------------------------------------------")
+        if userChoice.lower() == "y":
+            print("\n===>>> Rail Fence Grid <<<===")
+            for row in fence:
+                print(''.join(row))
+            break
+        elif userChoice.lower() == "n":
+            print("Okay, thank you for using the railfence cipher.")
+            break
+        else:
+            print("Invalid Input! Please select a valid choice. ")
+            print("\nPlease enter 'Y' or 'N'. ")
+            continue
 
 #=========================================================================
 # Rail fence decryption function
