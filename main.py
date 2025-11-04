@@ -10,11 +10,12 @@ This is the main driver program for the group project.
 It allows users to choose between different classical ciphers:
     -Rail Fence Cipher (Implemented by Damien Ho)
     -Caesar Cipher (Implemented by Connor Reid)
+    -Atbash Cipher (Implemented by Ross Prizeman)
 
 Damien's Contributions:
     -Created the main CLI menu system
     -Integrated Rail Fence Cipher (wrapped class structure)
-
+    -Improved exit logic for Rail Fence to return users back to main menu.
 """
 from rail_fence_cipher import RailFenceCipher #Damien: Importing my wrapped Rail Fence Cipher class
 
