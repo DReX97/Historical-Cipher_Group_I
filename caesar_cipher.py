@@ -9,35 +9,39 @@ Allow for the word to be Case sensitive and numbers allowed.
 """
 
 import string
-from time import sleep
+#Removed the Sleep import from original as not essential.
 
 alphabet = string.ascii_lowercase  #"abcdefghijklmnopqrstuvwxyz"
 
+# updated code that Encrypts or decrypts a message using Caesar cipher.
+def caesar_cipher(message, key, decrypt=False):
+    answer = ""
 
-def decrypt():
-    print("Welcome to Caesar Cipher Decryption.\n")
-    encrypted_message = input("Enter the message you would like to decrypt: ").strip()
-    print()
-    key = int(input("Enter key to decrypt: "))
+    for c in message:
+        if c.lower() in alphabet: #This will handle both uppercase and lowercase
+            position = alphabet.find(c.lower()) #.lower() returns a string where all characters are lower case
 
-    decrypted_message = ""
-
-    for c in encrypted_message:
-
-        if c in alphabet:
-            position = alphabet.find(c)
-            new_position = (position - key) % 26
+           #Adding a new encryption feature (very similar structure to decrypting)
+            if decrypt:
+                new_position = (position - key) % 26
+            else:
+                new_position = (position + key) % 26
+                #this will make it so the word shifts left if decrypting, and right if encrypting
             new_character = alphabet[new_position]
-            decrypted_message += new_character
-        else:
-            decrypted_message += c
+            # Function to preserve original case
+            if c.isupper():
+                answer += new_character.upper()
+            elif c.islower():
+                answer += new_character.lower()
+            else:
+                answer += c
 
-    print("\nDecrypting your message...\n")
-    sleep(2)  # give an appearance of doing something complicated
-    print("Stand by, almost finished...\n")
-    sleep(2)  # more of the same
-    print("Your decrypted message is:\n")
-    print(decrypted_message)
+            return answer
 
 
-decrypt()
+    #print("\nDecrypting your message...\n")
+    #sleep(2)  # give an appearance of doing something complicated
+    #print("Stand by, almost finished...\n")
+    #sleep(2)  # more of the same
+    #print("Your decrypted message is:\n")
+    #print(message)
