@@ -72,6 +72,26 @@ class RailFenceCipher:
         format_enc_message = format_enc_message.replace(" ", "")
         print("--------------------------------------------------------------------")
         print(f"\nEncrypted message: {format_enc_message}")
+        # =========================================================================
+        #Damien: Added Encryption Strength Indicator as a bonus feature as follows for the CA and requested by Lecturer.
+        #Description: This calculates an approximate encryption strength score out of 10
+        #The formula uses the message length and number of rails to estimate complexity
+        #   -The score is capped at 10 -> min(10, ...) to prevent unrealistic values
+        #The final output should display a rating label (weak, medium, strong)
+        strength = min(10, (len(message) // 4)+rails)
+
+        #Determine strength level based on score
+        if strength < 4:
+            level = "Weak"
+        elif strength < 8:
+            level = "Medium"
+        else:
+            level = "Strong"
+
+        #Display encryption strength summary to user
+        print(f"Encryption Strenght: {strength}/10 - {level}")
+        # =========================================================================
+
         print("\n--------------------------------------------------------------------")
 
         # =========================================================================
