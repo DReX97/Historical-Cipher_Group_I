@@ -252,8 +252,8 @@ class RailFenceCipher:
                         #     )
                 case 3:
                     #Damien: Added user feedback message before exiting
-                    print("Goodbye! ^_^")
-                    exit()
+                    print("Returning to main menu...")
+                    return
                 case _:
                     #Damien: Added fall back for invalid menu options
                     print("\nInvalid Choice! Please select available choices.")
