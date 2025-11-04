@@ -16,6 +16,9 @@ Damien's Contributions:
     -Created the main CLI menu system
     -Integrated Rail Fence Cipher (wrapped class structure)
     -Improved exit logic for Rail Fence to return users back to main menu.
+
+Ross's Contributions:
+    -integrated the atbash cipher 
 """
 from rail_fence_cipher import RailFenceCipher #Damien: Importing my wrapped Rail Fence Cipher class
 from atbash import AtbashCipher
