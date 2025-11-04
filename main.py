@@ -20,6 +20,7 @@ Damien's Contributions:
 Ross's Contributions:
     -integrated the atbash cipher 
 """
+from caesar_cipher import CaesarCipher
 from rail_fence_cipher import RailFenceCipher #Damien: Importing my wrapped Rail Fence Cipher class
 from atbash import AtbashCipher
 
@@ -47,7 +48,7 @@ Historical Cipher Menu
         if choice == "1":
             rail_menu()
         elif choice == "2":
-            pass
+            caesar_menu()
         elif choice == "3":
             Atmenu()
         elif choice == "4":
@@ -64,6 +65,10 @@ Historical Cipher Menu
 def rail_menu():
     cipher = RailFenceCipher()#create instance
     cipher.RFCMenu()#call the wrapped class menu
+
+def caesar_menu():
+    cipher = CaesarCipher()
+    cipher.c_menu()
 
 def Atmenu():
     cipher = AtbashCipher()
