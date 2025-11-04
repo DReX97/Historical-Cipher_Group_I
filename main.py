@@ -18,6 +18,7 @@ Damien's Contributions:
     -Improved exit logic for Rail Fence to return users back to main menu.
 """
 from rail_fence_cipher import RailFenceCipher #Damien: Importing my wrapped Rail Fence Cipher class
+from atbash import AtbashCipher
 
 #==========================================================
 #Main Menu function
@@ -45,7 +46,7 @@ Historical Cipher Menu
         elif choice == "2":
             pass
         elif choice == "3":
-            pass
+            Atmenu()
         elif choice == "4":
             print("Goodbye! Thank you for using our application! ^_^")
             break
@@ -60,6 +61,10 @@ Historical Cipher Menu
 def rail_menu():
     cipher = RailFenceCipher()#create instance
     cipher.RFCMenu()#call the wrapped class menu
+
+def Atmenu():
+    cipher = AtbashCipher()
+    cipher.Atmenu()
 
 #Entry Point
 if __name__ == "__main__":
