@@ -38,6 +38,18 @@ def caesar_cipher(message, key, decrypt=False):
 
             return answer
 
+    def get_key():
+        #this will ask the user for a key to shift the word
+        while True:
+            try: #ask for user to enter a should be a number between 0 and 26
+                key = int(input("Please enter a key for encryption or decryption: "))
+                if 0 <= key <= 26:
+                    return key
+                else: #in case user enters an invalid number
+                    print("Please enter a valid key for encryption or decryption. (0/26)")
+            except ValueError: #incase user enters a character
+                print("Please enter a number, not text.")
+
 
     #print("\nDecrypting your message...\n")
     #sleep(2)  # give an appearance of doing something complicated
