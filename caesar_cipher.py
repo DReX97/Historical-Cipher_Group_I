@@ -11,7 +11,7 @@ Allow for the word to be Case sensitive and numbers allowed.
 import string
 alphabet = string.ascii_lowercase + string.digits  # letters from a-z an num 0-10
 #Removed the Sleep import from original as not essential.
-class CaesarCipher():
+class CaesarCipher:
     def __init__(self):
         print("\nWelcome to the Caesar Cipher. ")
 
