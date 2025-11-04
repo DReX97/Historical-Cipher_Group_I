@@ -7,12 +7,14 @@ Description:
 This is the baseline Rail Fence Cipher implementation originally sourced from GitHub.
 My Contribution includes:
 -Implemented decryption function.
+-Refactored the code into an object-oriented class structure (RailFenceCipher) for modular use.
 -Removed spaces from input before encryption.
 -Added error handling for invalid numeric inputs (try/except)
 -Added input validation for empty messages and rail key limits
 -Removed unnecessary 21-character restriction from original
 -Improved user feedback and readability for better usability
 -Enhanced user interface with better visual separators
+-Added validation for Y/N grid input to prevent invalid responses
 -Integrate with main.py for group project demo.
 """
 import string
