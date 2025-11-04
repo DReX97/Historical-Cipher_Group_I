@@ -8,6 +8,11 @@ changes made :
 - not dependent on input being all uppercase characters
 - can use both upper and lower case characters
 - still uses the hardcoded example
+- added a menu
+- no longer uses hard coded example
+- takes user input
+- no longer have to run the file again to encrypt/ decrypt more than one input
+- also gives an error message if the user enters an invalid option when asked if they would like to encrypt decrypt or exit
 """
 def atbash(text):
     result = ""
@@ -22,12 +27,33 @@ def atbash(text):
 # Hard-coded driver function to run the program
 
 
-def main():
-    message = 'ALICE KILLED BOB'
-    print(atbash(message.upper()))
+def menu():
+    while True:
+        print("""\n=== Atbash Cipher ===
+1. Encrypt a message
+2. Decrypt a message
+3. Exit
+""")
+        # Get a valid numeric choice
+        try:
+            choice = int(input("Enter a choice: ").strip())
+        except ValueError:
+            print("Invalid input! Please enter 1, 2, or 3.\n")
+            continue
 
-    message = 'ZORXV PROOVW YLY'
-    print(atbash(message.upper()))
+        if choice == 1:
+            # Encrypt (same operation as decrypt)
+            text = input("Enter message to encrypt: ")
+            print("\nResult:", atbash(text))
+        elif choice == 2:
+            # Decrypt (same operation as encrypt)
+            text = input("Enter message to decrypt: ")
+            print("\nResult:", atbash(text))
+        elif choice == 3:
+            print("thank you")
+            break
+        else:
+            print("Invalid choice! Please select 1, 2, or 3.\n")
 
 
 # Executes the main function
