@@ -18,9 +18,8 @@ Damien's Contributions:
     -Improved exit logic for Rail Fence to return users back to main menu.
 
 Ross's Contributions:
-    -integrated the atbash cipher 
+    -integrated the atbash cipher
 """
-from caesar_cipher import CaesarCipher
 from rail_fence_cipher import RailFenceCipher #Damien: Importing my wrapped Rail Fence Cipher class
 from atbash import AtbashCipher
 
@@ -31,7 +30,7 @@ from atbash import AtbashCipher
 def main():
 
     print("Welcome to Historical Cipher Group I!")
-    print("This program will include Rail Fence, Caesar, and Vigenere ciphers.")
+    print("This program will include Rail Fence, Caesar, and Atbash ciphers.")
 
     while True:
         print("""\n
@@ -48,7 +47,7 @@ Historical Cipher Menu
         if choice == "1":
             rail_menu()
         elif choice == "2":
-            caesar_menu()
+            pass
         elif choice == "3":
             Atmenu()
         elif choice == "4":
@@ -65,10 +64,6 @@ Historical Cipher Menu
 def rail_menu():
     cipher = RailFenceCipher()#create instance
     cipher.RFCMenu()#call the wrapped class menu
-
-def caesar_menu():
-    cipher = CaesarCipher()
-    cipher.c_menu()
 
 def Atmenu():
     cipher = AtbashCipher()
