@@ -29,7 +29,7 @@ Connor's Contributions:
 """
 from rail_fence_cipher import RailFenceCipher #Damien: Importing my wrapped Rail Fence Cipher class
 from atbash import AtbashCipher
-
+from caesar_cipher import CaesarCipher
 #==========================================================
 #Main Menu function
 #Damien: Displays the overall project menu and lets users choose which cipher they want to use
@@ -54,9 +54,9 @@ Historical Cipher Menu
         if choice == "1":
             rail_menu()
         elif choice == "2":
-            pass
+            caesar_menu()
         elif choice == "3":
-            Atmenu()
+            AtMenu()
         elif choice == "4":
             print("Goodbye! Thank you for using our application! ^_^")
             break
@@ -72,9 +72,13 @@ def rail_menu():
     cipher = RailFenceCipher()#create instance
     cipher.RFCMenu()#call the wrapped class menu
 
-def Atmenu():
+def caesar_menu():
+    cipher = CaesarCipher()
+    cipher.c_menu()
+
+def AtMenu():
     cipher = AtbashCipher()
-    cipher.Atmenu()
+    cipher.AtMenu()
 
 #Entry Point
 if __name__ == "__main__":

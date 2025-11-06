@@ -35,7 +35,7 @@ class AtbashCipher:
 #Hard-coded driver function to run the program
 
 
-    def Atmenu(self):
+    def AtMenu(self):
         while True:
             print(f"""\n===  {self.name} ===
     1. Encrypt a message
