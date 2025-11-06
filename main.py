@@ -19,6 +19,13 @@ Damien's Contributions:
 
 Ross's Contributions:
     -integrated the atbash cipher
+
+Connor's Contributions:
+    -Created an encryption method for the Caesar Cipher.
+    -Made an option so the user can enter whether they want to encrypt or decrypt a message.
+    -Added a feature that allows the user to select the ROT13 method of encryption.
+    -Made sure invalid options will not be accepted.
+    -Allow for the usage of numbers as well as characters a-z in the users message.
 """
 from rail_fence_cipher import RailFenceCipher #Damien: Importing my wrapped Rail Fence Cipher class
 from atbash import AtbashCipher
