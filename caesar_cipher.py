@@ -61,9 +61,10 @@ class CaesarCipher:
             print("\nDo you want to:")
             print("1. Encrypt a message")
             print("2. Decrypt a message")
-            print("3. Return to Cipher selection")
+            print("3. ROT13 a message")
+            print("4. Return to Cipher selection")
 
-            choice = input("Enter choice (1/2/3): ").strip() #.strip just removes the spaces at the beginning and the end
+            choice = input("Enter choice (1/2/3/4): ").strip() #.strip just removes the spaces at the beginning and the end
 
 #if 1 is entered, prompts user for a message to encrypt
             if choice == "1":
@@ -80,9 +81,18 @@ class CaesarCipher:
                 result = self.caesar_cipher(message, key, decrypt=True) #tells the method to decrypt instead of encrypt
                 print(f"Decrypted message: {result}")
 
-            elif choice == "3":
+            #ROT13 is a special case of Caesar Cipher
+            elif choice == "3": # simple additional feature(ROT13) where it automatically shifts the message 13 spaces
+                message = input("Enter message for ROT13: ").strip()
+                result = self.caesar_cipher(message, 13)  # Always shift by 13
+                print(f"ROT13 result: {result}")
+
+            elif choice == "4":
                 print("Returned to Cipher Selection")
                 break
+
+            else:
+                print("Invalid choice. Please enter 1, 2, 3, or 4.")
 
 
 if __name__ == "__main__":
