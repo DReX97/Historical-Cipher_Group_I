@@ -116,6 +116,7 @@ class RailFenceCipher:
     #=========================================================================
     # Rail fence decryption function
     #Author: Damien Ho
+    #Source: https://www.geeksforgeeks.org/dsa/rail-fence-cipher-encryption-decryption/
     #Description:
     #           This function performs decryption for the Rail Fence Cipher.
     #           It reconstructs the zig zag pattern used during encryption,
@@ -231,15 +232,6 @@ class RailFenceCipher:
                         #Damien: Prevent crash if non-integer key is entered
                         print("\nInvalid Input! Key must be a number. ")
 
-                    # if user_key >= rails and len(user_message) >= len(message):
-                    #     rails = user_key
-                    #
-                    #     railfence_encryption(rails, user_message)
-                    #     break
-                    # else:
-                    #     print(
-                    #         "\nNot a valid input. Key size must be greater than 3 and message must be more than 21 letters."
-                    #     )
                 case 2:
                     try:
                         user_key = int(input("-----------------\nEnter key (number of rails): "))
@@ -261,15 +253,6 @@ class RailFenceCipher:
                     except ValueError:
                         #Damien: Prevent crash if non-integer key is entered
                         print("\nInvalid Input! Key must be a number. ")
-                        # if user_key >= rails and len(user_message) >= len(message):
-                        #     rails = user_key
-                        #
-                        #     railfence_decryption(rails, user_message)
-                        #     break
-                        # else:
-                        #     print(
-                        #         "\nNot a valid input. Key size must be greater than 3 and message must be more than 21 letters."
-                        #     )
                 case 3:
                     #Damien: Added user feedback message before exiting
                     print("Returning to main menu...")
